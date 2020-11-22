@@ -1,27 +1,32 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
-import { Exclude } from 'class-transformer'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string;
 
   @Column('varchar')
-  name: string
+  name: string;
 
   @Column('varchar')
-  email: string
+  email: string;
 
   @Column('varchar')
   @Exclude()
-  password: string
+  password: string;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date
-
+  updated_at: Date;
 }
 
-export default User
+export default User;
