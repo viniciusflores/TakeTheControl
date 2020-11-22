@@ -1,4 +1,4 @@
-{
+[{
     "name": "default",
     "type": "postgres",
     "host": "localhost",
@@ -27,4 +27,4 @@
     ],
     "useUnifiedTopology": true
   }
-
+]
