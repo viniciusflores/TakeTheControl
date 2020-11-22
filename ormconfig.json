@@ -1,4 +1,4 @@
-[{
+{
     "name": "default",
     "type": "postgres",
     "host": "localhost",
@@ -15,5 +15,5 @@
     "cli": {
       "migrationsDir": "./src/shared/infra/typeorm/migrations"
     }
-  }
-]
+}
+

@@ -23,7 +23,7 @@ Run in development environment
 
 #### Database: Postgress in Docker
 
-> docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+> docker run --name takethecontrol_postgress -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=takethecontrol -p 5432:5432 -d postgres
 
 #### Database: Create new migration
 
