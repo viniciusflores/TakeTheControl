@@ -1,0 +1,14 @@
+@hostname = localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@username = vinicius
+@password = 123456
+
+POST http://{{host}}/users
+Content-Type: application/json
+
+{
+  "name":"{{username}}",
+  "email":"{{username}}{{$timestamp}}@email.com",
+  "password":"{{password}}"
+}
