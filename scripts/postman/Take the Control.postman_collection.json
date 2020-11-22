@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "d1d3ec5a-68de-40b2-8d8f-2633d933c9b9",
+		"name": "Take the Control",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"{{username}}\",\n  \"email\":\"{{username}}{{$timestamp}}@email.com\",\n  \"password\":\"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/users",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
