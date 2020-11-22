@@ -18,3 +18,17 @@ Install dependencies
 
 Run in development environment
 > yarn dev:server
+
+## FAQ
+
+#### Database: Postgress in Docker
+
+> docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+#### Database: Create new migration
+
+> yarn typeorm migration:create -n <migration-name>
+
+#### Database: Run migrations
+
+> yarn typeorm migration:run
