@@ -25,6 +25,8 @@ Run in development environment
 
 > docker run --name takethecontrol_postgress -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=takethecontrol -p 5432:5432 -d postgres
 
+> docker-compose up -d
+
 #### Database: Create new migration
 
 > yarn typeorm migration:create -n <migration-name>
