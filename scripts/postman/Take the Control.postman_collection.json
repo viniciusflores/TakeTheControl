@@ -7,6 +7,31 @@
 	"item": [
 		{
 			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8b8b3740-0b1c-4fbb-b8c1-18f65f10f07c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2718a183-d6c6-41ae-a52e-5622f58a2e43",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"user_email\", jsonData.email);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -27,6 +52,58 @@
 					],
 					"path": [
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Session",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "caf6797e-26f6-4293-93f0-798b672547e2",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5b09b47-7461-49f8-b240-31eff785ec79",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"user_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\":\"{{user_email}}\",\n  \"password\":\"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/sessions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"sessions"
 					]
 				}
 			},
