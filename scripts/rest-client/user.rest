@@ -1,14 +1,26 @@
 @hostname = localhost
 @port = 3333
-@host = {{hostname}}:{{port}}
+@host = http://{{hostname}}:{{port}}
 @username = vinicius
 @password = 123456
 
-POST http://{{host}}/users
+###
+
+POST {{host}}/users
 Content-Type: application/json
 
 {
   "name":"{{username}}",
   "email":"{{username}}{{$timestamp}}@email.com",
+  "password":"{{password}}"
+}
+
+###
+
+POST {{host}}/sessions
+Content-Type: application/json
+
+{
+  "email":"vinicius1606098930@email.com",
   "password":"{{password}}"
 }
