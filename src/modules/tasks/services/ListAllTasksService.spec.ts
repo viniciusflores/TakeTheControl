@@ -28,7 +28,7 @@ describe('CreateTask', () => {
       user_id: '123',
     });
 
-    const tasks = await listAllTasksService.execute();
+    const tasks = await listAllTasksService.execute({ user_id: '123' });
 
     expect(tasks.length).toBe(2);
     expect(tasks[0]).toHaveProperty('id');
@@ -36,5 +36,12 @@ describe('CreateTask', () => {
     expect(tasks[1].title).toBe('New Task Two');
     expect(tasks[0].status).toBe('open');
     expect(tasks[1].status).toBe('closed');
+  });
+
+  it('Should not be possible to see appointments', async () => {
+    const tasks = await listAllTasksService.execute({
+      user_id: 'inexistentUser',
+    });
+    expect(tasks.length).toBe(0);
   });
 });

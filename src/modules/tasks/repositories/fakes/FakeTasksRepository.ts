@@ -16,9 +16,12 @@ class FakeTasksRepository implements ITasksRepository {
     return task;
   }
 
-  public async listAllTasks(): Promise<Task[]> {
-    const { tasks } = this;
-    return tasks;
+  public async listAllTasks(user_id: string): Promise<Task[]> {
+    const userTasks = this.tasks.filter((task) => {
+      return task.user_id === user_id;
+    });
+
+    return userTasks;
   }
 }
 
