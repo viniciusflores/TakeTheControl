@@ -7,26 +7,19 @@ import Task from '@modules/tasks/infra/typeorm/entities/Task';
 interface IRequest {
   user_id: string;
   title: string;
-  description: string | null;
   status: string;
 }
 
 @injectable()
-class CreateTaskService {
+class CreateTaskServices {
   constructor(
     @inject('TasksRepository') private tasksRepository: ITasksRepository,
   ) { }
 
-  public async execute({
-    user_id,
-    title,
-    description,
-    status,
-  }: IRequest): Promise<Task> {
+  public async execute({ user_id, title, status }: IRequest): Promise<Task> {
     const task = await this.tasksRepository.create({
       user_id,
       title,
-      description,
       status,
     });
 
@@ -34,4 +27,4 @@ class CreateTaskService {
   }
 }
 
-export default CreateTaskService;
+export default CreateTaskServices;

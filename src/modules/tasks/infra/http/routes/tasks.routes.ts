@@ -14,7 +14,6 @@ tasksRouter.post(
   celebrate({
     [Segments.BODY]: {
       title: Joi.string().required(),
-      description: Joi.string(),
       status: Joi.string().required(),
     },
   }),

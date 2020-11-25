@@ -15,6 +15,11 @@ class FakeTasksRepository implements ITasksRepository {
 
     return task;
   }
+
+  public async listAllTasks(): Promise<Task[]> {
+    const { tasks } = this;
+    return tasks;
+  }
 }
 
 export default FakeTasksRepository;

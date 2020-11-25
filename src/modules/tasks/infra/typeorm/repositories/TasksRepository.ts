@@ -15,6 +15,11 @@ class TasksRepository implements ITasksRepository {
     await this.ormRepository.save(task);
     return task;
   }
+
+  public async listAllTasks(): Promise<Task[] | undefined> {
+    const tasks = this.ormRepository.find();
+    return tasks;
+  }
 }
 
 export default TasksRepository;
