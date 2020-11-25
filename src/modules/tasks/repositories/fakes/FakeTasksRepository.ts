@@ -4,6 +4,18 @@ import ITasksRepository from '@modules/tasks/repositories/ITasksRepository';
 import Task from '@modules/tasks/infra/typeorm/entities/Task';
 
 class FakeTasksRepository implements ITasksRepository {
+  findById(id: string): Promise<Task | undefined> {
+    throw new Error('Method not implemented.');
+  }
+
+  delete(task_id: string): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  save(data: any): Promise<Task> {
+    throw new Error('Method not implemented.');
+  }
+
   private tasks: Task[] = [];
 
   public async create(taskData: ICreateTaskDTO): Promise<Task> {
@@ -16,7 +28,7 @@ class FakeTasksRepository implements ITasksRepository {
     return task;
   }
 
-  public async listAllTasks(user_id: string): Promise<Task[]> {
+  public async list(user_id: string): Promise<Task[]> {
     const userTasks = this.tasks.filter((task) => {
       return task.user_id === user_id;
     });

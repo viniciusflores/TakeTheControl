@@ -1,6 +1,5 @@
 import FakeTasksRepository from '@modules/tasks/repositories/fakes/FakeTasksRepository';
 import CreateTasksService from '@modules/tasks/services/CreateTasksService';
-import AppError from '@shared/errors/AppError';
 
 let fakeTasksRepository: FakeTasksRepository;
 let createTask: CreateTasksService;

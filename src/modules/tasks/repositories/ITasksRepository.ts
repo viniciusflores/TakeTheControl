@@ -3,5 +3,8 @@ import ICreateTaskDTO from '@modules/tasks/dtos/ICreateTaskDTO';
 
 export default interface ITasksRepository {
   create(data: ICreateTaskDTO): Promise<Task>;
-  listAllTasks(user_id: string): Promise<Task[]>;
+  list(user_id: string): Promise<Task[]>;
+  findById(id: string): Promise<Task | undefined>;
+  delete(id: string): Promise<void>;
+  save(task: Task): Promise<Task>;
 }

@@ -2,28 +2,27 @@ import { injectable, inject } from 'tsyringe';
 
 import ITasksRepository from '@modules/tasks/repositories/ITasksRepository';
 import Task from '@modules/tasks/infra/typeorm/entities/Task';
+import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   user_id: string;
-  title: string;
-  status: string;
 }
 
 @injectable()
-class CreateTaskServices {
+class FindTaskByIdService {
   constructor(
     @inject('TasksRepository') private tasksRepository: ITasksRepository,
   ) { }
 
-  public async execute({ user_id, title, status }: IRequest): Promise<Task> {
-    const task = await this.tasksRepository.create({
-      user_id,
-      title,
-      status,
-    });
+  public async execute({ user_id }: IRequest): Promise<Task> {
+    const task = await this.tasksRepository.findById(user_id);
+
+    if (!task) {
+      throw new AppError('Task not found');
+    }
 
     return task;
   }
 }
 
-export default CreateTaskServices;
+export default FindTaskByIdService;
