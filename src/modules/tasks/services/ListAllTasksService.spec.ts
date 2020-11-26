@@ -37,7 +37,7 @@ describe('CreateTask', () => {
     expect(tasks[1].status).toBe('closed');
   });
 
-  it('Should not be possible to see appointments', async () => {
+  it('Should not be possible to see task for wrong user', async () => {
     const tasks = await listAllTasksService.execute({
       user_id: 'inexistentUser',
     });

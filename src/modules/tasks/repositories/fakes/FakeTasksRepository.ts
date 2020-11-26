@@ -4,18 +4,6 @@ import ITasksRepository from '@modules/tasks/repositories/ITasksRepository';
 import Task from '@modules/tasks/infra/typeorm/entities/Task';
 
 class FakeTasksRepository implements ITasksRepository {
-  findById(id: string): Promise<Task | undefined> {
-    throw new Error('Method not implemented.');
-  }
-
-  delete(task_id: string): Promise<void> {
-    throw new Error('Method not implemented.');
-  }
-
-  save(data: any): Promise<Task> {
-    throw new Error('Method not implemented.');
-  }
-
   private tasks: Task[] = [];
 
   public async create(taskData: ICreateTaskDTO): Promise<Task> {
@@ -29,11 +17,29 @@ class FakeTasksRepository implements ITasksRepository {
   }
 
   public async list(user_id: string): Promise<Task[]> {
-    const userTasks = this.tasks.filter((task) => {
-      return task.user_id === user_id;
-    });
+    const userTasks = this.tasks.filter((task) => task.user_id === user_id);
 
     return userTasks;
+  }
+
+  public async findById(id: string): Promise<Task | undefined> {
+    const task = this.tasks.find((t) => t.id === id);
+
+    return task;
+  }
+
+  public async delete(id: string): Promise<void> {
+    this.tasks.filter((task) => task.id === id);
+  }
+
+  public async save(task: Task): Promise<Task> {
+    const findIndex = this.tasks.findIndex(
+      (findTask) => findTask.id === task.id,
+    );
+
+    this.tasks[findIndex] = task;
+
+    return task;
   }
 }
 

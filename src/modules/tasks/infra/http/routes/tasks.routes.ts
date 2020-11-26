@@ -21,6 +21,12 @@ tasksRouter.post(
   tasksController.create,
 );
 
-tasksRouter.get('/', tasksController.listAll);
+tasksRouter.get('/', tasksController.index);
+
+tasksRouter.get('/:id', tasksController.show);
+
+tasksRouter.put('/:id', tasksController.update);
+
+tasksRouter.delete('/:id', tasksController.delete);
 
 export default tasksRouter;
