@@ -26,9 +26,6 @@ class Task {
   title: string;
 
   @Column('varchar')
-  description: string;
-
-  @Column('varchar')
   status: string;
 
   @CreateDateColumn()
