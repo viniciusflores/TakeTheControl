@@ -20,16 +20,15 @@ describe('User Test', () => {
   it('Should not possible to create a user with same email from another', () => {
     const userEmail = `johndoe${Date.now()}@email.com`;
 
-    const abc = cy
-      .request({
-        method: 'post',
-        url: '/users',
-        body: {
-          name: 'John Doe',
-          email: userEmail,
-          password: '123456',
-        },
-      })
+    cy.request({
+      method: 'post',
+      url: '/users',
+      body: {
+        name: 'John Doe',
+        email: userEmail,
+        password: '123456',
+      },
+    })
       .its('body.id')
       .should('not.be.empty');
 
