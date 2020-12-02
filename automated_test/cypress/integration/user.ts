@@ -18,44 +18,36 @@ describe('User Test', () => {
   });
 
   it('Should not possible to create a user with same email from another', () => {
+    const userEmail = `johndoe${Date.now()}@email.com`;
+
     const abc = cy
       .request({
         method: 'post',
         url: '/users',
         body: {
           name: 'John Doe',
-          email: `johndoe${Date.now()}@email.com`,
+          email: userEmail,
           password: '123456',
         },
       })
-      // .its('body.email')
-      // .should('not.be.empty')
-      .as('user_mail')
-      .then((res) => {
-        assert.equal(res.status, 201);
-        return res.body.email;
-      });
-
-    const vini = cy.get('@user_mail');
-
-    console.log(abc);
-    console.log(vini);
-    console.log(String(vini));
+      .its('body.id')
+      .should('not.be.empty');
 
     cy.request({
       method: 'post',
       url: '/users',
       body: {
         name: 'John Doe',
-        email: String(vini),
+        email: userEmail,
         password: '123456',
       },
       failOnStatusCode: false,
     }).as('response');
 
     cy.get('@response').then((res) => {
-      assert(res.status, '400');
-      // assert(res.body.message, )
+      assert.equal(res.status, 400);
+      assert.equal(res.body.status, 'error');
+      assert.equal(res.body.message, 'Email address already used.');
     });
   });
 });
