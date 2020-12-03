@@ -20,7 +20,7 @@ export default class TasksControllers {
       status,
     });
 
-    return response.json(classToClass(task));
+    return response.status(201).json(classToClass(task));
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
@@ -63,6 +63,6 @@ export default class TasksControllers {
 
     const task = await deleteTask.execute({ id, user_id });
 
-    return response.json(classToClass(task));
+    return response.status(204).json();
   }
 }
