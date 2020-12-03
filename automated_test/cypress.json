@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json",
 
+  "projectId": "v6rjww",
   "baseUrl": "http://localhost:3333",
   "reporter": "mochawesome",
   "reporterOptions": {

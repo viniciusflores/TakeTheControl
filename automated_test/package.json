@@ -6,9 +6,9 @@
   "author": "Vinicius Flores <viniciusflores379@gmail.com>",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --record --key 58d6dbeb-157a-447e-a127-150e03d5c7a6",
     "cy:clearReport": "rm -rf index.json mochawesome-report/ cypress/results/ cypress/screenshots cypress/videos",
-    "cy:testWithReport": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=false,html=false,json=true",
+    "cy:testWithReport": "cypress run --record --key 58d6dbeb-157a-447e-a127-150e03d5c7a6 --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=false,html=false,json=true",
     "cy:reportMerge": "mochawesome-merge 'cypress/results/*.json' > index.json",
     "cy:reportGenerate": "marge index.json",
     "cy:test":"yarn cy:clearReport && yarn cy:testWithReport && yarn cy:reportMerge && yarn cy:reportGenerate"
