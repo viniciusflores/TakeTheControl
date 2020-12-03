@@ -6,10 +6,18 @@
   "author": "Vinicius Flores <viniciusflores379@gmail.com>",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cy:clearReport": "rm -rf index.json mochawesome-report/ cypress/results/ cypress/screenshots cypress/videos",
+    "cy:testWithReport": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=false,html=false,json=true",
+    "cy:reportMerge": "mochawesome-merge 'cypress/results/*.json' > index.json",
+    "cy:reportGenerate": "marge index.json",
+    "cy:test":"yarn cy:clearReport && yarn cy:testWithReport && yarn cy:reportMerge && yarn cy:reportGenerate"
   },
   "dependencies": {
     "cypress": "^6.0.1",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
     "typescript": "^4.1.2"
   }
 }
