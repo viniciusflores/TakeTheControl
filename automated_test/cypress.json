@@ -3,6 +3,7 @@
 
   "projectId": "v6rjww",
   "baseUrl": "http://localhost:3333",
+  "watchForFileChanges": false,
   "reporter": "mochawesome",
   "reporterOptions": {
     "reportDir": "cypress/results",
