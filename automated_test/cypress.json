@@ -1,5 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json",
 
-  "baseUrl": "http://localhost:3333"
+  "projectId": "v6rjww",
+  "baseUrl": "http://localhost:3333",
+  "watchForFileChanges": false,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  },
+  "video": false
 }

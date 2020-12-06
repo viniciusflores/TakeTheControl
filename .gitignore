@@ -1,7 +1,15 @@
 /node_modules
-*/node_modules
 /dist
 /coverage
 
 .env
 ormconfig.json
+
+# Automated Tests
+automated_test/node_modules
+automated_test/index.json
+automated_test/cypress/results
+automated_test/cypress/screenshots
+automated_test/cypress/videos
+automated_test/mochawesome-report
+
