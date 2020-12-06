@@ -5,8 +5,14 @@ This project ...
 ### Pre-requisites
 
 [Git](https://git-scm.com/)
+
 [Node](https://nodejs.org/en/)
+
 [Yarn](https://yarnpkg.com/)
+
+[Docker](https://www.docker.com/)
+
+[Docker-Compose](https://docs.docker.com/compose/)
 
 ## How to run
 
@@ -18,6 +24,20 @@ Install dependencies
 
 Run in development environment
 > yarn dev:server
+
+## How to run - automated tests
+
+Access directory:
+> cd automated_test
+
+Install dependencies
+> yarn
+
+Run all tests
+> yarn cy:test
+
+Open Cy IDE
+> yarn cy:open
 
 ## FAQ
 
